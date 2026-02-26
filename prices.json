@@ -1,0 +1,20 @@
+{
+  "Tokyo": [
+    {
+      "timestamp": "2026-02-26T20:59:04",
+      "date": "2026-02-26",
+      "price": 593.27,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-04-27"
+    }
+  ],
+  "Berlin": [
+    {
+      "timestamp": "2026-02-26T20:59:07",
+      "date": "2026-02-26",
+      "price": 191.47,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-04-27"
+    }
+  ]
+}
