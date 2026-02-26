@@ -106,10 +106,10 @@ def get_amadeus_token() -> str | None:
         return None
 
 
-def search_flights(origin: str, destination: str, depart_date: str, token: str) -> float | None:
+def search_flights(origin: str, destination: str, depart_date: str, token: str) -> dict | None:
     """
-    Call the Amadeus API and return the cheapest price found (in USD).
-    Returns None if the request fails or no prices are found.
+    Call the Amadeus API and return details of the cheapest flight found.
+    Returns a dict with price, carrier, and flight times, or None on failure.
     """
     try:
         response = requests.get(
@@ -142,20 +142,37 @@ def search_flights(origin: str, destination: str, depart_date: str, token: str) 
         )
         return None
 
-    prices = []
-    for offer in offers:
-        total = offer.get("price", {}).get("total")
-        if total is not None:
-            prices.append(float(total))
-
-    if not prices:
+    # Find the cheapest offer
+    valid = [o for o in offers if o.get("price", {}).get("total") is not None]
+    if not valid:
         log.warning(f"Could not read price data for {origin}→{destination}.")
         log.debug(f"Raw API response: {json.dumps(data)[:500]}")
         return None
 
-    cheapest = min(prices)
-    log.info(f"  {origin} → {destination}  |  date: {depart_date}  |  cheapest: ${cheapest:.0f}")
-    return cheapest
+    cheapest_offer = min(valid, key=lambda o: float(o["price"]["total"]))
+    price = float(cheapest_offer["price"]["total"])
+
+    # Extract carrier and flight times from the first itinerary
+    carriers = data.get("dictionaries", {}).get("carriers", {})
+    first_seg = cheapest_offer["itineraries"][0]["segments"][0]
+    last_seg  = cheapest_offer["itineraries"][-1]["segments"][-1]
+    code      = first_seg.get("carrierCode", "")
+    carrier   = carriers.get(code, code)
+    flight_no = f"{code}{first_seg.get('number', '')}"
+    departs_at = first_seg.get("departure", {}).get("at", depart_date)
+    arrives_at = last_seg.get("arrival", {}).get("at", "")
+
+    log.info(
+        f"  {origin} → {destination}  |  {departs_at}  |  "
+        f"{carrier} {flight_no}  |  ${price:.0f}"
+    )
+    return {
+        "price":      price,
+        "carrier":    carrier,
+        "flight_no":  flight_no,
+        "departs_at": departs_at,
+        "arrives_at": arrives_at,
+    }
 
 
 def build_booking_link(origin: str, destination: str, depart_date: str) -> str:
@@ -183,9 +200,11 @@ def check_destination(city: str, iata: str, price_data: dict, token: str) -> Non
     depart_date = (datetime.now() + timedelta(days=DAYS_AHEAD)).strftime("%Y-%m-%d")
     log.info(f"Checking {city} ({iata})  →  flight date {depart_date}")
 
-    price = search_flights(ORIGIN_AIRPORT, iata, depart_date, token)
-    if price is None:
+    result = search_flights(ORIGIN_AIRPORT, iata, depart_date, token)
+    if result is None:
         return  # Something went wrong; already logged above.
+
+    price = result["price"]
 
     # Save this result to history
     record = {
@@ -194,6 +213,10 @@ def check_destination(city: str, iata: str, price_data: dict, token: str) -> Non
         "price":       price,
         "route":       f"{ORIGIN_AIRPORT}→{iata}",
         "depart_date": depart_date,
+        "carrier":     result["carrier"],
+        "flight_no":   result["flight_no"],
+        "departs_at":  result["departs_at"],
+        "arrives_at":  result["arrives_at"],
     }
     price_data[city].append(record)
     save_prices(price_data)

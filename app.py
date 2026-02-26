@@ -136,6 +136,7 @@ for city, records in data.items():
     )
 
     # Actual price line
+    carrier_col = df["carrier"] if "carrier" in df.columns else "—"
     fig.add_trace(go.Scatter(
         x=df["timestamp"],
         y=df["price"],
@@ -143,7 +144,8 @@ for city, records in data.items():
         name="Recorded Price",
         line=dict(color="#4A90D9", width=2),
         marker=dict(size=6),
-        hovertemplate="$%{y:.0f}<br>%{x}<extra></extra>",
+        customdata=df[["carrier", "flight_no", "departs_at"]].fillna("—") if "carrier" in df.columns else None,
+        hovertemplate="$%{y:.0f}  |  %{customdata[0]} %{customdata[1]}<br>Departs: %{customdata[2]}<extra></extra>",
     ))
 
     # Running average line
@@ -195,8 +197,15 @@ for city, records in data.items():
 
     # ── Data Table ────────────────────────────────────────────────────────────
     with st.expander(f"📋 All recorded prices for {city} (most recent first)"):
-        display = df[["timestamp", "price", "depart_date", "running_avg", "is_error_fare"]].copy()
-        display.columns = ["Checked At", "Price (USD)", "Flight Date", "Running Avg", "Error Fare?"]
+        cols = ["timestamp", "price", "departs_at", "arrives_at", "carrier", "flight_no", "running_avg", "is_error_fare"]
+        # Older records may not have the new fields — fill with "—" if missing
+        for col in ["departs_at", "arrives_at", "carrier", "flight_no"]:
+            if col not in df.columns:
+                df[col] = "—"
+            else:
+                df[col] = df[col].fillna("—")
+        display = df[cols].copy()
+        display.columns = ["Checked At", "Price (USD)", "Departs", "Arrives", "Airline", "Flight", "Running Avg", "Error Fare?"]
         display["Checked At"]  = display["Checked At"].dt.strftime("%Y-%m-%d %H:%M")
         display["Price (USD)"] = display["Price (USD)"].map("${:.0f}".format)
         display["Running Avg"] = display["Running Avg"].map("${:.0f}".format)
