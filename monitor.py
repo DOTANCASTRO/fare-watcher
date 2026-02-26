@@ -1,7 +1,7 @@
 """
 monitor.py – Fare Watcher
 =========================
-Checks for "Error Fares" to Tokyo and Berlin using the Skyscanner API.
+Checks for "Error Fares" to Tokyo and Berlin using the Amadeus API.
 An Error Fare = any price that is 40% or more below the recent average.
 When one is found, a Telegram alert is sent with a direct booking link.
 
@@ -25,7 +25,8 @@ from dotenv import load_dotenv
 # ── Load your keys from the .env file ────────────────────────────────────────
 load_dotenv()
 
-RAPIDAPI_KEY      = os.getenv("RAPIDAPI_KEY")
+AMADEUS_API_KEY   = os.getenv("AMADEUS_API_KEY")
+AMADEUS_API_SECRET = os.getenv("AMADEUS_API_SECRET")
 TELEGRAM_TOKEN    = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID  = os.getenv("TELEGRAM_CHAT_ID")
 ORIGIN_AIRPORT    = os.getenv("ORIGIN_AIRPORT", "JFK")
@@ -80,53 +81,61 @@ def save_prices(data: dict) -> None:
         json.dump(data, f, indent=2)
 
 
-# ── Skyscanner API ────────────────────────────────────────────────────────────
+# ── Amadeus API ───────────────────────────────────────────────────────────────
 
-SKYSCANNER_HOST = "skyscanner44.p.rapidapi.com"
-
-
-def search_flights(origin: str, destination: str, depart_date: str) -> float | None:
-    """
-    Call the Skyscanner API and return the cheapest price found (in USD).
-    Returns None if the request fails or no prices are found.
-    """
-    if not RAPIDAPI_KEY or RAPIDAPI_KEY == "your_rapidapi_key_here":
-        log.error("RAPIDAPI_KEY is not set in your .env file. Please add it.")
+def get_amadeus_token() -> str | None:
+    """Get a short-lived access token from Amadeus (valid ~30 minutes)."""
+    if not AMADEUS_API_KEY or not AMADEUS_API_SECRET:
+        log.error("AMADEUS_API_KEY or AMADEUS_API_SECRET is not set in your .env file.")
         return None
 
-    url = f"https://{SKYSCANNER_HOST}/search"
-    headers = {
-        "X-RapidAPI-Key":  RAPIDAPI_KEY,
-        "X-RapidAPI-Host": SKYSCANNER_HOST,
-    }
-    params = {
-        "origin":        origin,
-        "destination":   destination,
-        "departureDate": depart_date,
-        "adults":        "1",
-        "currency":      "USD",
-    }
-
     try:
-        response = requests.get(url, headers=headers, params=params, timeout=20)
+        response = requests.post(
+            "https://test.api.amadeus.com/v1/security/oauth2/token",
+            data={
+                "grant_type":    "client_credentials",
+                "client_id":     AMADEUS_API_KEY,
+                "client_secret": AMADEUS_API_SECRET,
+            },
+            timeout=15,
+        )
+        response.raise_for_status()
+        return response.json().get("access_token")
+    except requests.exceptions.RequestException as e:
+        log.error(f"Could not get Amadeus token: {e}")
+        return None
+
+
+def search_flights(origin: str, destination: str, depart_date: str, token: str) -> float | None:
+    """
+    Call the Amadeus API and return the cheapest price found (in USD).
+    Returns None if the request fails or no prices are found.
+    """
+    try:
+        response = requests.get(
+            "https://test.api.amadeus.com/v2/shopping/flight-offers",
+            headers={"Authorization": f"Bearer {token}"},
+            params={
+                "originLocationCode":      origin,
+                "destinationLocationCode": destination,
+                "departureDate":           depart_date,
+                "adults":                  1,
+                "currencyCode":            "USD",
+                "max":                     10,
+            },
+            timeout=20,
+        )
         response.raise_for_status()
         data = response.json()
     except requests.exceptions.HTTPError as e:
-        log.error(f"HTTP error calling Skyscanner API: {e}")
+        log.error(f"HTTP error calling Amadeus API: {e}")
         return None
     except requests.exceptions.RequestException as e:
-        log.error(f"Network error calling Skyscanner API: {e}")
-        return None
-    except ValueError:
-        log.error("Skyscanner API returned unexpected (non-JSON) data.")
+        log.error(f"Network error calling Amadeus API: {e}")
         return None
 
-    # ── Parse the response ────────────────────────────────────────────────────
-    # The API returns a list of flight options under "itineraries".
-    # Each has a "price" object with a "raw" numeric value.
-    itineraries = data.get("itineraries", [])
-
-    if not itineraries:
+    offers = data.get("data", [])
+    if not offers:
         log.warning(
             f"No flights returned for {origin}→{destination} on {depart_date}. "
             f"The route may not be available on this date."
@@ -134,16 +143,13 @@ def search_flights(origin: str, destination: str, depart_date: str) -> float | N
         return None
 
     prices = []
-    for item in itineraries:
-        raw_price = item.get("price", {}).get("raw")
-        if raw_price is not None:
-            prices.append(float(raw_price))
+    for offer in offers:
+        total = offer.get("price", {}).get("total")
+        if total is not None:
+            prices.append(float(total))
 
     if not prices:
-        log.warning(
-            f"Could not read price data for {origin}→{destination}. "
-            f"The API response format may have changed — check monitor.log."
-        )
+        log.warning(f"Could not read price data for {origin}→{destination}.")
         log.debug(f"Raw API response: {json.dumps(data)[:500]}")
         return None
 
@@ -169,7 +175,7 @@ def rolling_average(records: list, last_n: int = 20) -> float | None:
     return sum(recent_prices) / len(recent_prices) if recent_prices else None
 
 
-def check_destination(city: str, iata: str, price_data: dict) -> None:
+def check_destination(city: str, iata: str, price_data: dict, token: str) -> None:
     """
     Fetch the current price for one destination, store it, and trigger
     a Telegram alert if it qualifies as an Error Fare.
@@ -177,7 +183,7 @@ def check_destination(city: str, iata: str, price_data: dict) -> None:
     depart_date = (datetime.now() + timedelta(days=DAYS_AHEAD)).strftime("%Y-%m-%d")
     log.info(f"Checking {city} ({iata})  →  flight date {depart_date}")
 
-    price = search_flights(ORIGIN_AIRPORT, iata, depart_date)
+    price = search_flights(ORIGIN_AIRPORT, iata, depart_date, token)
     if price is None:
         return  # Something went wrong; already logged above.
 
@@ -273,6 +279,11 @@ def run_once() -> None:
     log.info("=" * 60)
     log.info("Starting fare check…")
 
+    token = get_amadeus_token()
+    if not token:
+        log.error("Could not get Amadeus token — skipping this check.")
+        return
+
     price_data = load_prices()
 
     # Make sure every destination has a list in the data file
@@ -281,7 +292,7 @@ def run_once() -> None:
             price_data[city] = []
 
     for city, iata in DESTINATIONS.items():
-        check_destination(city, iata, price_data)
+        check_destination(city, iata, price_data, token)
 
     log.info("Fare check complete.")
 
