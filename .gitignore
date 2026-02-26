@@ -1,0 +1,11 @@
+# Secrets — never commit these
+.env
+
+# Generated files
+prices.json
+monitor.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
