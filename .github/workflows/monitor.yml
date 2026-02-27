@@ -8,6 +8,8 @@ on:
 jobs:
   check-fares:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # needed to commit prices.json back to the repo
 
     steps:
       - name: Checkout repo
