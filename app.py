@@ -261,6 +261,9 @@ if all_error_rows:
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.divider()
+    last_ts = max((r["timestamp"] for v in data.values() for r in v), default=None)
+    if last_ts:
+        st.metric("Last Check", last_ts[:16].replace("T", " "))
     total_checks = sum(len(v) for v in data.values())
     st.metric("Total Price Checks", total_checks)
     st.metric("Total Error Fares", total_error_fares)
