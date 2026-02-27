@@ -31,7 +31,7 @@ ERROR_FARE_CUTOFF = 0.60   # 40% below average
 # ── Header ────────────────────────────────────────────────────────────────────
 st.title("✈️ Fare Watcher Dashboard")
 st.caption(
-    "Monitoring Error Fares to Tokyo & Berlin — "
+    "Monitoring Error Fares to Tokyo & Berlin (round trip) — "
     "an Error Fare is any price 40%+ below the recent average."
 )
 st.divider()
@@ -58,6 +58,7 @@ if not data or all(len(v) == 0 for v in data.values()):
     st.stop()
 
 # ── One section per destination ───────────────────────────────────────────────
+total_error_fares = 0
 for city, records in data.items():
     if not records:
         st.subheader(f"✈️ {city}")
@@ -83,6 +84,7 @@ for city, records in data.items():
     latest      = df.iloc[-1]
     pct_vs_avg  = ((latest["price"] - overall_avg) / overall_avg) * 100
     error_count = int(df["is_error_fare"].sum())
+    total_error_fares += error_count
 
     # ── KPI cards ─────────────────────────────────────────────────────────────
     st.subheader(f"✈️ {city}")
@@ -171,7 +173,7 @@ for city, records in data.items():
         ))
 
     fig.update_layout(
-        title=f"{city} – Price History (USD, one-way)",
+        title=f"{city} – Price History (USD, round trip)",
         xaxis_title="Check Date & Time",
         yaxis_title="Price (USD)",
         legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="left", x=0),
@@ -197,15 +199,15 @@ for city, records in data.items():
 
     # ── Data Table ────────────────────────────────────────────────────────────
     with st.expander(f"📋 All recorded prices for {city} (most recent first)"):
-        cols = ["timestamp", "price", "departs_at", "arrives_at", "carrier", "flight_no", "running_avg", "is_error_fare"]
+        cols = ["timestamp", "price", "departs_at", "arrives_at", "return_date", "carrier", "flight_no", "running_avg", "is_error_fare"]
         # Older records may not have the new fields — fill with "—" if missing
-        for col in ["departs_at", "arrives_at", "carrier", "flight_no"]:
+        for col in ["departs_at", "arrives_at", "return_date", "carrier", "flight_no"]:
             if col not in df.columns:
                 df[col] = "—"
             else:
                 df[col] = df[col].fillna("—")
         display = df[cols].copy()
-        display.columns = ["Checked At", "Price (USD)", "Departs", "Arrives", "Airline", "Flight", "Running Avg", "Error Fare?"]
+        display.columns = ["Checked At", "Price (USD)", "Departs", "Arrives", "Return Date", "Airline", "Flight", "Running Avg", "Error Fare?"]
         display["Checked At"]  = display["Checked At"].dt.strftime("%Y-%m-%d %H:%M")
         display["Price (USD)"] = display["Price (USD)"].map("${:.0f}".format)
         display["Running Avg"] = display["Running Avg"].map("${:.0f}".format)
@@ -216,32 +218,10 @@ for city, records in data.items():
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.header("ℹ️ About")
-    st.markdown(
-        """
-        **Fare Watcher** monitors flights to:
-        - 🇯🇵 Tokyo (NRT)
-        - 🇩🇪 Berlin (BER)
-
-        **What is an Error Fare?**
-        Any price that is **40% or more below** the recent average — usually caused by
-        airline pricing mistakes or flash sales.
-
-        **How to use:**
-        1. Fill in your API keys in `.env`
-        2. Run `python monitor.py` in a terminal
-        3. Keep this dashboard open to watch for deals
-        """
-    )
     st.divider()
     total_checks = sum(len(v) for v in data.values())
-    total_deals  = sum(
-        int(pd.DataFrame(v)["is_error_fare"].sum())
-        if v else 0
-        for v in data.values()
-    ) if data else 0
     st.metric("Total Price Checks", total_checks)
-    st.metric("Total Error Fares", total_deals)
+    st.metric("Total Error Fares", total_error_fares)
     st.divider()
 
     if st.button("🔄 Refresh Data", use_container_width=True):

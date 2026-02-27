@@ -50,6 +50,9 @@ DESTINATIONS = {
 # How many days ahead to look for flights
 DAYS_AHEAD = 60
 
+# Length of the round trip in days (return flight is this many days after departure)
+TRIP_DURATION_DAYS = 7
+
 # Minimum number of data points before Error Fare detection kicks in
 MIN_HISTORY = 5
 
@@ -106,9 +109,9 @@ def get_amadeus_token() -> str | None:
         return None
 
 
-def search_flights(origin: str, destination: str, depart_date: str, token: str) -> dict | None:
+def search_flights(origin: str, destination: str, depart_date: str, return_date: str, token: str) -> dict | None:
     """
-    Call the Amadeus API and return details of the cheapest flight found.
+    Call the Amadeus API and return details of the cheapest round-trip flight found.
     Returns a dict with price, carrier, and flight times, or None on failure.
     """
     try:
@@ -119,6 +122,7 @@ def search_flights(origin: str, destination: str, depart_date: str, token: str) 
                 "originLocationCode":      origin,
                 "destinationLocationCode": destination,
                 "departureDate":           depart_date,
+                "returnDate":              return_date,
                 "adults":                  1,
                 "currencyCode":            "USD",
                 "max":                     10,
@@ -175,12 +179,13 @@ def search_flights(origin: str, destination: str, depart_date: str, token: str) 
     }
 
 
-def build_booking_link(origin: str, destination: str, depart_date: str) -> str:
-    """Return a Skyscanner deep-link so the user can go straight to booking."""
-    date_compact = depart_date.replace("-", "")
+def build_booking_link(origin: str, destination: str, depart_date: str, return_date: str) -> str:
+    """Return a Skyscanner deep-link for a round trip so the user can go straight to booking."""
+    depart_compact = depart_date.replace("-", "")
+    return_compact = return_date.replace("-", "")
     return (
         f"https://www.skyscanner.com/transport/flights/"
-        f"{origin.lower()}/{destination.lower()}/{date_compact}/"
+        f"{origin.lower()}/{destination.lower()}/{depart_compact}/{return_compact}/"
     )
 
 
@@ -198,9 +203,10 @@ def check_destination(city: str, iata: str, price_data: dict, token: str) -> Non
     a Telegram alert if it qualifies as an Error Fare.
     """
     depart_date = (datetime.now() + timedelta(days=DAYS_AHEAD)).strftime("%Y-%m-%d")
-    log.info(f"Checking {city} ({iata})  →  flight date {depart_date}")
+    return_date = (datetime.now() + timedelta(days=DAYS_AHEAD + TRIP_DURATION_DAYS)).strftime("%Y-%m-%d")
+    log.info(f"Checking {city} ({iata})  →  depart {depart_date}, return {return_date}")
 
-    result = search_flights(ORIGIN_AIRPORT, iata, depart_date, token)
+    result = search_flights(ORIGIN_AIRPORT, iata, depart_date, return_date, token)
     if result is None:
         return  # Something went wrong; already logged above.
 
@@ -213,6 +219,7 @@ def check_destination(city: str, iata: str, price_data: dict, token: str) -> Non
         "price":       price,
         "route":       f"{ORIGIN_AIRPORT}→{iata}",
         "depart_date": depart_date,
+        "return_date": return_date,
         "carrier":     result["carrier"],
         "flight_no":   result["flight_no"],
         "departs_at":  result["departs_at"],
@@ -242,8 +249,8 @@ def check_destination(city: str, iata: str, price_data: dict, token: str) -> Non
 
     if ratio <= ERROR_FARE_CUTOFF:
         log.info(f"  *** ERROR FARE DETECTED for {city}! Sending Telegram alert. ***")
-        booking_url = build_booking_link(ORIGIN_AIRPORT, iata, depart_date)
-        send_telegram_alert(city, iata, price, average, pct_off, booking_url, depart_date)
+        booking_url = build_booking_link(ORIGIN_AIRPORT, iata, depart_date, return_date)
+        send_telegram_alert(city, iata, price, average, pct_off, booking_url, depart_date, return_date)
     else:
         log.info(f"  No error fare. (Need price to drop below ${average * ERROR_FARE_CUTOFF:.0f})")
 
@@ -258,6 +265,7 @@ def send_telegram_alert(
     pct_off: int,
     booking_url: str,
     depart_date: str,
+    return_date: str,
 ) -> None:
     """Send a Telegram message with full fare details and a booking link."""
     if not TELEGRAM_TOKEN or TELEGRAM_TOKEN == "your_telegram_bot_token_here":
@@ -269,8 +277,9 @@ def send_telegram_alert(
 
     message = (
         f"🚨 <b>ERROR FARE ALERT — {city}!</b>\n\n"
-        f"✈️  Route:   {ORIGIN_AIRPORT} → {iata}\n"
+        f"✈️  Route:   {ORIGIN_AIRPORT} → {iata} (round trip)\n"
         f"📅  Depart:  {depart_date}\n"
+        f"🔙  Return:  {return_date}\n"
         f"💰  Price:   <b>${price:.0f}</b>\n"
         f"📊  Average: ${average:.0f}\n"
         f"🔥  <b>{pct_off}% BELOW AVERAGE</b> — this is an Error Fare!\n\n"
