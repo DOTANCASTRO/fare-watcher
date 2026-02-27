@@ -59,6 +59,7 @@ if not data or all(len(v) == 0 for v in data.values()):
 
 # ── One section per destination ───────────────────────────────────────────────
 total_error_fares = 0
+all_error_rows = []
 for city, records in data.items():
     if not records:
         st.subheader(f"✈️ {city}")
@@ -79,6 +80,13 @@ for city, records in data.items():
     df["prev_avg"] = df["price"].shift(1).expanding().mean()
     df["is_error_fare"] = df["price"] < (df["prev_avg"] * ERROR_FARE_CUTOFF)
     df["is_error_fare"] = df["is_error_fare"].fillna(False)
+
+    # Ensure optional columns exist (older records may not have them)
+    for col in ["departs_at", "arrives_at", "return_date", "carrier", "flight_no"]:
+        if col not in df.columns:
+            df[col] = "—"
+        else:
+            df[col] = df[col].fillna("—")
 
     overall_avg = df["price"].mean()
     latest      = df.iloc[-1]
@@ -162,6 +170,32 @@ for city, records in data.items():
 
     # Error fare highlight markers
     error_df = df[df["is_error_fare"]]
+
+    # Collect error fares for the summary table
+    for _, row in error_df.iterrows():
+        pct_below   = round((1 - row["price"] / row["prev_avg"]) * 100)
+        route_parts = str(row.get("route", "→")).split("→")
+        origin_c    = route_parts[0].strip().lower() if len(route_parts) > 1 else ""
+        dest_c      = route_parts[1].strip().lower() if len(route_parts) > 1 else ""
+        dep_str     = str(row["depart_date"]).replace("-", "")
+        ret_str     = str(row["return_date"]).replace("-", "")
+        book_link   = (
+            f"https://www.skyscanner.com/transport/flights/{origin_c}/{dest_c}/{dep_str}/{ret_str}/"
+            if origin_c and dest_c and row["depart_date"] != "—" else ""
+        )
+        all_error_rows.append({
+            "City":        city,
+            "Found At":    row["timestamp"].strftime("%Y-%m-%d %H:%M"),
+            "Price (USD)": f"${row['price']:.0f}",
+            "Avg at Time": f"${row['prev_avg']:.0f}",
+            "% Below Avg": f"{pct_below}%",
+            "Departs":     row["depart_date"],
+            "Returns":     row["return_date"],
+            "Airline":     row["carrier"],
+            "Flight":      row["flight_no"],
+            "Book":        book_link,
+        })
+
     if not error_df.empty:
         fig.add_trace(go.Scatter(
             x=error_df["timestamp"],
@@ -200,12 +234,6 @@ for city, records in data.items():
     # ── Data Table ────────────────────────────────────────────────────────────
     with st.expander(f"📋 All recorded prices for {city} (most recent first)"):
         cols = ["timestamp", "price", "departs_at", "arrives_at", "return_date", "carrier", "flight_no", "running_avg", "is_error_fare"]
-        # Older records may not have the new fields — fill with "—" if missing
-        for col in ["departs_at", "arrives_at", "return_date", "carrier", "flight_no"]:
-            if col not in df.columns:
-                df[col] = "—"
-            else:
-                df[col] = df[col].fillna("—")
         display = df[cols].copy()
         display.columns = ["Checked At", "Price (USD)", "Departs", "Arrives", "Return Date", "Airline", "Flight", "Running Avg", "Error Fare?"]
         display["Checked At"]  = display["Checked At"].dt.strftime("%Y-%m-%d %H:%M")
@@ -214,6 +242,20 @@ for city, records in data.items():
         display["Error Fare?"] = display["Error Fare?"].map({True: "🔥 YES", False: "—"})
         st.dataframe(display.iloc[::-1].reset_index(drop=True), use_container_width=True)
 
+    st.divider()
+
+# ── Error Fares Summary ───────────────────────────────────────────────────────
+if all_error_rows:
+    st.header("🔥 All Error Fares Detected")
+    ef_df = pd.DataFrame(all_error_rows)
+    st.dataframe(
+        ef_df,
+        column_config={
+            "Book": st.column_config.LinkColumn("Book on Skyscanner"),
+        },
+        use_container_width=True,
+        hide_index=True,
+    )
     st.divider()
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
