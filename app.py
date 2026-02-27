@@ -69,7 +69,7 @@ for city, records in data.items():
 
     # Build a clean DataFrame
     df = pd.DataFrame(records)
-    df["timestamp"] = pd.to_datetime(df["timestamp"])
+    df["timestamp"] = pd.to_datetime(df["timestamp"]) + pd.Timedelta(hours=2)  # UTC → Israel (UTC+2)
     df = df.sort_values("timestamp").reset_index(drop=True)
 
     # Running (expanding) average — this is what the monitor uses
@@ -208,7 +208,7 @@ for city, records in data.items():
 
     fig.update_layout(
         title=f"{city} – Price History (USD, round trip)",
-        xaxis_title="Check Date & Time",
+        xaxis_title="Check Date & Time (Israel, UTC+2)",
         yaxis_title="Price (USD)",
         legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="left", x=0),
         hovermode="x unified",
@@ -263,7 +263,8 @@ with st.sidebar:
     st.divider()
     last_ts = max((r["timestamp"] for v in data.values() for r in v), default=None)
     if last_ts:
-        st.metric("Last Check", last_ts[:16].replace("T", " "))
+        last_ts_local = (pd.to_datetime(last_ts) + pd.Timedelta(hours=2)).strftime("%Y-%m-%d %H:%M")
+        st.metric("Last Check", last_ts_local)
     total_checks = sum(len(v) for v in data.values())
     st.metric("Total Price Checks", total_checks)
     st.metric("Total Error Fares", total_error_fares)
