@@ -942,6 +942,18 @@
       "flight_no": "EY596",
       "departs_at": "2026-05-01T07:40:00",
       "arrives_at": "2026-05-09T11:00:00"
+    },
+    {
+      "timestamp": "2026-03-02T21:34:11",
+      "date": "2026-03-02",
+      "price": 960.57,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-05-01",
+      "return_date": "2026-05-08",
+      "carrier": "ETIHAD AIRWAYS",
+      "flight_no": "EY596",
+      "departs_at": "2026-05-01T07:40:00",
+      "arrives_at": "2026-05-09T11:00:00"
     }
   ],
   "Berlin": [
@@ -1878,6 +1890,18 @@
     },
     {
       "timestamp": "2026-03-02T20:38:00",
+      "date": "2026-03-02",
+      "price": 407.57,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-05-01",
+      "return_date": "2026-05-08",
+      "carrier": "LOT POLISH AIRLINES",
+      "flight_no": "LO152",
+      "departs_at": "2026-05-01T05:05:00",
+      "arrives_at": "2026-05-08T19:45:00"
+    },
+    {
+      "timestamp": "2026-03-02T21:34:14",
       "date": "2026-03-02",
       "price": 407.57,
       "route": "TLV\u2192BER",
