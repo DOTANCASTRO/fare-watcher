@@ -738,6 +738,18 @@
       "flight_no": "OS84",
       "departs_at": "2026-04-30T06:00:00",
       "arrives_at": "2026-05-08T03:35:00"
+    },
+    {
+      "timestamp": "2026-03-02T02:04:52",
+      "date": "2026-03-02",
+      "price": 972.67,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-05-01",
+      "return_date": "2026-05-08",
+      "carrier": "AUSTRIAN AIRLINES",
+      "flight_no": "OS84",
+      "departs_at": "2026-05-01T06:00:00",
+      "arrives_at": "2026-05-09T03:35:00"
     }
   ],
   "Berlin": [
@@ -1479,6 +1491,18 @@
       "flight_no": "LY2371",
       "departs_at": "2026-04-30T06:20:00",
       "arrives_at": "2026-05-08T03:05:00"
+    },
+    {
+      "timestamp": "2026-03-02T02:04:55",
+      "date": "2026-03-02",
+      "price": 407.57,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-05-01",
+      "return_date": "2026-05-08",
+      "carrier": "LOT POLISH AIRLINES",
+      "flight_no": "LO152",
+      "departs_at": "2026-05-01T05:05:00",
+      "arrives_at": "2026-05-08T19:45:00"
     }
   ]
 }
