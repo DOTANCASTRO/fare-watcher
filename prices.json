@@ -1170,6 +1170,18 @@
       "flight_no": "EY596",
       "departs_at": "2026-05-02T07:40:00",
       "arrives_at": "2026-05-10T11:00:00"
+    },
+    {
+      "timestamp": "2026-03-03T20:32:32",
+      "date": "2026-03-03",
+      "price": 960.57,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-05-02",
+      "return_date": "2026-05-09",
+      "carrier": "ETIHAD AIRWAYS",
+      "flight_no": "EY596",
+      "departs_at": "2026-05-02T07:40:00",
+      "arrives_at": "2026-05-10T11:00:00"
     }
   ],
   "Berlin": [
@@ -2334,6 +2346,18 @@
     },
     {
       "timestamp": "2026-03-03T19:39:21",
+      "date": "2026-03-03",
+      "price": 423.67,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-05-02",
+      "return_date": "2026-05-09",
+      "carrier": "TAP PORTUGAL",
+      "flight_no": "TP1604",
+      "departs_at": "2026-05-02T05:05:00",
+      "arrives_at": "2026-05-10T04:05:00"
+    },
+    {
+      "timestamp": "2026-03-03T20:32:41",
       "date": "2026-03-03",
       "price": 423.67,
       "route": "TLV\u2192BER",
