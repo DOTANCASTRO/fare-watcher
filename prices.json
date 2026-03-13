@@ -3546,6 +3546,18 @@
       "flight_no": "OS84",
       "departs_at": "2026-05-12T06:00:00",
       "arrives_at": "2026-05-20T03:35:00"
+    },
+    {
+      "timestamp": "2026-03-13T20:35:00",
+      "date": "2026-03-13",
+      "price": 962.97,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-05-12",
+      "return_date": "2026-05-19",
+      "carrier": "AUSTRIAN AIRLINES",
+      "flight_no": "OS84",
+      "departs_at": "2026-05-12T06:00:00",
+      "arrives_at": "2026-05-20T03:35:00"
     }
   ],
   "Berlin": [
@@ -7074,6 +7086,18 @@
     },
     {
       "timestamp": "2026-03-13T19:31:10",
+      "date": "2026-03-13",
+      "price": 344.67,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-05-12",
+      "return_date": "2026-05-19",
+      "carrier": "EL AL",
+      "flight_no": "LY2371",
+      "departs_at": "2026-05-12T06:20:00",
+      "arrives_at": "2026-05-20T03:05:00"
+    },
+    {
+      "timestamp": "2026-03-13T20:35:03",
       "date": "2026-03-13",
       "price": 344.67,
       "route": "TLV\u2192BER",
