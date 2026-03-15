@@ -4074,6 +4074,18 @@
       "flight_no": "OS84",
       "departs_at": "2026-05-14T06:00:00",
       "arrives_at": "2026-05-22T03:35:00"
+    },
+    {
+      "timestamp": "2026-03-15T23:29:23",
+      "date": "2026-03-15",
+      "price": 960.07,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-05-14",
+      "return_date": "2026-05-21",
+      "carrier": "ETIHAD AIRWAYS",
+      "flight_no": "EY596",
+      "departs_at": "2026-05-14T07:40:00",
+      "arrives_at": "2026-05-22T11:00:00"
     }
   ],
   "Berlin": [
@@ -8130,6 +8142,18 @@
     },
     {
       "timestamp": "2026-03-15T22:28:48",
+      "date": "2026-03-15",
+      "price": 351.37,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-05-14",
+      "return_date": "2026-05-21",
+      "carrier": "CONDOR",
+      "flight_no": "DE4308",
+      "departs_at": "2026-05-14T05:25:00",
+      "arrives_at": "2026-05-22T00:45:00"
+    },
+    {
+      "timestamp": "2026-03-15T23:29:27",
       "date": "2026-03-15",
       "price": 351.37,
       "route": "TLV\u2192BER",
