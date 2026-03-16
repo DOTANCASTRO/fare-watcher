@@ -4158,6 +4158,18 @@
       "flight_no": "OS84",
       "departs_at": "2026-05-15T06:00:00",
       "arrives_at": "2026-05-23T03:35:00"
+    },
+    {
+      "timestamp": "2026-03-16T13:11:55",
+      "date": "2026-03-16",
+      "price": 959.97,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-05-15",
+      "return_date": "2026-05-22",
+      "carrier": "AUSTRIAN AIRLINES",
+      "flight_no": "OS84",
+      "departs_at": "2026-05-15T06:00:00",
+      "arrives_at": "2026-05-23T03:35:00"
     }
   ],
   "Berlin": [
@@ -8298,6 +8310,18 @@
     },
     {
       "timestamp": "2026-03-16T11:47:20",
+      "date": "2026-03-16",
+      "price": 351.37,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-05-15",
+      "return_date": "2026-05-22",
+      "carrier": "CONDOR",
+      "flight_no": "DE4308",
+      "departs_at": "2026-05-15T05:25:00",
+      "arrives_at": "2026-05-23T00:45:00"
+    },
+    {
+      "timestamp": "2026-03-16T13:11:59",
       "date": "2026-03-16",
       "price": 351.37,
       "route": "TLV\u2192BER",
