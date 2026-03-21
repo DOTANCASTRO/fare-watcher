@@ -5226,6 +5226,18 @@
       "flight_no": "EK2449",
       "departs_at": "2026-05-20T15:50:00",
       "arrives_at": "2026-05-28T10:25:00"
+    },
+    {
+      "timestamp": "2026-03-21T19:24:00",
+      "date": "2026-03-21",
+      "price": 1294.07,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-05-20",
+      "return_date": "2026-05-27",
+      "carrier": "EMIRATES",
+      "flight_no": "EK2449",
+      "departs_at": "2026-05-20T15:50:00",
+      "arrives_at": "2026-05-28T10:25:00"
     }
   ],
   "Berlin": [
@@ -10434,6 +10446,18 @@
     },
     {
       "timestamp": "2026-03-21T18:36:26",
+      "date": "2026-03-21",
+      "price": 279.97,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-05-20",
+      "return_date": "2026-05-27",
+      "carrier": "HAHN AIR SYSTEMS",
+      "flight_no": "H158",
+      "departs_at": "2026-05-20T14:20:00",
+      "arrives_at": "2026-05-27T20:05:00"
+    },
+    {
+      "timestamp": "2026-03-21T19:24:02",
       "date": "2026-03-21",
       "price": 279.97,
       "route": "TLV\u2192BER",
