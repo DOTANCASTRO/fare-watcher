@@ -5430,6 +5430,18 @@
       "flight_no": "ET415",
       "departs_at": "2026-05-21T10:00:00",
       "arrives_at": "2026-05-29T21:10:00"
+    },
+    {
+      "timestamp": "2026-03-22T15:26:26",
+      "date": "2026-03-22",
+      "price": 1240.47,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-05-21",
+      "return_date": "2026-05-28",
+      "carrier": "ETHIOPIAN AIRLINES",
+      "flight_no": "ET415",
+      "departs_at": "2026-05-21T10:00:00",
+      "arrives_at": "2026-05-29T21:10:00"
     }
   ],
   "Berlin": [
@@ -10842,6 +10854,18 @@
     },
     {
       "timestamp": "2026-03-22T14:27:55",
+      "date": "2026-03-22",
+      "price": 232.17,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-05-21",
+      "return_date": "2026-05-28",
+      "carrier": "ISRAIR",
+      "flight_no": "6H251",
+      "departs_at": "2026-05-21T14:40:00",
+      "arrives_at": "2026-05-29T00:05:00"
+    },
+    {
+      "timestamp": "2026-03-22T15:26:28",
       "date": "2026-03-22",
       "price": 232.17,
       "route": "TLV\u2192BER",
