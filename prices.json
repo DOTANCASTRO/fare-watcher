@@ -5526,6 +5526,18 @@
       "flight_no": "EK2449",
       "departs_at": "2026-05-21T15:50:00",
       "arrives_at": "2026-05-29T10:25:00"
+    },
+    {
+      "timestamp": "2026-03-22T23:27:42",
+      "date": "2026-03-22",
+      "price": 1305.07,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-05-21",
+      "return_date": "2026-05-28",
+      "carrier": "EMIRATES",
+      "flight_no": "EK2449",
+      "departs_at": "2026-05-21T15:50:00",
+      "arrives_at": "2026-05-29T10:25:00"
     }
   ],
   "Berlin": [
@@ -11034,6 +11046,18 @@
     },
     {
       "timestamp": "2026-03-22T22:25:40",
+      "date": "2026-03-22",
+      "price": 232.17,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-05-21",
+      "return_date": "2026-05-28",
+      "carrier": "ISRAIR",
+      "flight_no": "6H251",
+      "departs_at": "2026-05-21T14:40:00",
+      "arrives_at": "2026-05-29T00:05:00"
+    },
+    {
+      "timestamp": "2026-03-22T23:27:45",
       "date": "2026-03-22",
       "price": 232.17,
       "route": "TLV\u2192BER",
