@@ -5634,6 +5634,18 @@
       "flight_no": "ET415",
       "departs_at": "2026-05-22T10:00:00",
       "arrives_at": "2026-05-30T14:35:00"
+    },
+    {
+      "timestamp": "2026-03-23T15:59:46",
+      "date": "2026-03-23",
+      "price": 1294.07,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-05-22",
+      "return_date": "2026-05-29",
+      "carrier": "EMIRATES",
+      "flight_no": "EK2449",
+      "departs_at": "2026-05-22T15:50:00",
+      "arrives_at": "2026-05-30T10:25:00"
     }
   ],
   "Berlin": [
@@ -11259,6 +11271,18 @@
       "flight_no": "AF963",
       "departs_at": "2026-05-22T16:30:00",
       "arrives_at": "2026-05-30T02:35:00"
+    },
+    {
+      "timestamp": "2026-03-23T15:59:48",
+      "date": "2026-03-23",
+      "price": 418.57,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-05-22",
+      "return_date": "2026-05-29",
+      "carrier": "LOT POLISH AIRLINES",
+      "flight_no": "LO152",
+      "departs_at": "2026-05-22T05:05:00",
+      "arrives_at": "2026-05-30T03:50:00"
     }
   ]
 }
