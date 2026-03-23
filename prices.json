@@ -5694,6 +5694,18 @@
       "flight_no": "EK2449",
       "departs_at": "2026-05-22T15:50:00",
       "arrives_at": "2026-05-30T10:25:00"
+    },
+    {
+      "timestamp": "2026-03-23T21:36:14",
+      "date": "2026-03-23",
+      "price": 1294.07,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-05-22",
+      "return_date": "2026-05-29",
+      "carrier": "EMIRATES",
+      "flight_no": "EK2449",
+      "departs_at": "2026-05-22T15:50:00",
+      "arrives_at": "2026-05-30T10:25:00"
     }
   ],
   "Berlin": [
@@ -11379,6 +11391,18 @@
       "flight_no": "LO152",
       "departs_at": "2026-05-22T05:05:00",
       "arrives_at": "2026-05-30T03:50:00"
+    },
+    {
+      "timestamp": "2026-03-23T21:36:17",
+      "date": "2026-03-23",
+      "price": 384.67,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-05-22",
+      "return_date": "2026-05-29",
+      "carrier": "KLM ROYAL DUTCH AIRLINES",
+      "flight_no": "KL2056",
+      "departs_at": "2026-05-22T16:30:00",
+      "arrives_at": "2026-05-30T02:35:00"
     }
   ]
 }
