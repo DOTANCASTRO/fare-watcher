@@ -94,7 +94,7 @@ def get_amadeus_token() -> str | None:
 
     try:
         response = requests.post(
-            "https://test.api.amadeus.com/v1/security/oauth2/token",
+            "https://api.amadeus.com/v1/security/oauth2/token",
             data={
                 "grant_type":    "client_credentials",
                 "client_id":     AMADEUS_API_KEY,
@@ -116,7 +116,7 @@ def search_flights(origin: str, destination: str, depart_date: str, return_date:
     """
     try:
         response = requests.get(
-            "https://test.api.amadeus.com/v2/shopping/flight-offers",
+            "https://api.amadeus.com/v2/shopping/flight-offers",
             headers={"Authorization": f"Bearer {token}"},
             params={
                 "originLocationCode":      origin,
