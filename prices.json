@@ -6330,6 +6330,18 @@
       "flight_no": "EY610",
       "departs_at": "2026-05-26T07:05:00",
       "arrives_at": "2026-06-03T11:10:00"
+    },
+    {
+      "timestamp": "2026-03-27T23:32:14",
+      "date": "2026-03-27",
+      "price": 954.97,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-05-26",
+      "return_date": "2026-06-02",
+      "carrier": "ETIHAD AIRWAYS",
+      "flight_no": "EY610",
+      "departs_at": "2026-05-26T07:05:00",
+      "arrives_at": "2026-06-03T11:10:00"
     }
   ],
   "Berlin": [
@@ -12644,6 +12656,18 @@
       "timestamp": "2026-03-27T22:32:41",
       "date": "2026-03-27",
       "price": 354.47,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-05-26",
+      "return_date": "2026-06-02",
+      "carrier": "AIR FRANCE",
+      "flight_no": "AF963",
+      "departs_at": "2026-05-26T16:30:00",
+      "arrives_at": "2026-06-02T14:45:00"
+    },
+    {
+      "timestamp": "2026-03-27T23:32:16",
+      "date": "2026-03-27",
+      "price": 353.87,
       "route": "TLV\u2192BER",
       "depart_date": "2026-05-26",
       "return_date": "2026-06-02",
