@@ -7002,6 +7002,18 @@
       "flight_no": "EY610",
       "departs_at": "2026-05-30T07:05:00",
       "arrives_at": "2026-06-07T11:10:00"
+    },
+    {
+      "timestamp": "2026-03-31T05:08:51",
+      "date": "2026-03-31",
+      "price": 954.77,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-05-30",
+      "return_date": "2026-06-06",
+      "carrier": "ETIHAD AIRWAYS",
+      "flight_no": "EY610",
+      "departs_at": "2026-05-30T07:05:00",
+      "arrives_at": "2026-06-07T11:10:00"
     }
   ],
   "Berlin": [
@@ -13986,6 +13998,18 @@
     },
     {
       "timestamp": "2026-03-31T02:24:16",
+      "date": "2026-03-31",
+      "price": 590.27,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-05-30",
+      "return_date": "2026-06-06",
+      "carrier": "AEGEAN AIRLINES",
+      "flight_no": "A3927",
+      "departs_at": "2026-05-30T19:55:00",
+      "arrives_at": "2026-06-07T02:45:00"
+    },
+    {
+      "timestamp": "2026-03-31T05:08:55",
       "date": "2026-03-31",
       "price": 590.27,
       "route": "TLV\u2192BER",
