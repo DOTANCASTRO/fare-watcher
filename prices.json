@@ -7566,6 +7566,18 @@
       "flight_no": "EY610",
       "departs_at": "2026-06-02T07:05:00",
       "arrives_at": "2026-06-10T11:10:00"
+    },
+    {
+      "timestamp": "2026-04-03T07:08:32",
+      "date": "2026-04-03",
+      "price": 955.07,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-02",
+      "return_date": "2026-06-09",
+      "carrier": "ETIHAD AIRWAYS",
+      "flight_no": "EY610",
+      "departs_at": "2026-06-02T07:05:00",
+      "arrives_at": "2026-06-10T11:10:00"
     }
   ],
   "Berlin": [
@@ -15114,6 +15126,18 @@
     },
     {
       "timestamp": "2026-04-03T05:04:57",
+      "date": "2026-04-03",
+      "price": 548.67,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-02",
+      "return_date": "2026-06-09",
+      "carrier": "EL AL",
+      "flight_no": "LY2371",
+      "departs_at": "2026-06-02T06:20:00",
+      "arrives_at": "2026-06-09T15:50:00"
+    },
+    {
+      "timestamp": "2026-04-03T07:08:35",
       "date": "2026-04-03",
       "price": 548.67,
       "route": "TLV\u2192BER",
