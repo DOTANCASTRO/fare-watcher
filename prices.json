@@ -7854,6 +7854,18 @@
       "flight_no": "EY610",
       "departs_at": "2026-06-03T07:05:00",
       "arrives_at": "2026-06-11T11:10:00"
+    },
+    {
+      "timestamp": "2026-04-04T12:55:10",
+      "date": "2026-04-04",
+      "price": 954.97,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-03",
+      "return_date": "2026-06-10",
+      "carrier": "ETIHAD AIRWAYS",
+      "flight_no": "EY610",
+      "departs_at": "2026-06-03T07:05:00",
+      "arrives_at": "2026-06-11T11:10:00"
     }
   ],
   "Berlin": [
@@ -15690,6 +15702,18 @@
     },
     {
       "timestamp": "2026-04-04T11:29:01",
+      "date": "2026-04-04",
+      "price": 440.37,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-03",
+      "return_date": "2026-06-10",
+      "carrier": "HAHN AIR SYSTEMS",
+      "flight_no": "H158",
+      "departs_at": "2026-06-03T10:15:00",
+      "arrives_at": "2026-06-10T20:05:00"
+    },
+    {
+      "timestamp": "2026-04-04T12:55:13",
       "date": "2026-04-04",
       "price": 440.37,
       "route": "TLV\u2192BER",
