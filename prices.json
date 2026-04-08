@@ -8610,6 +8610,18 @@
       "flight_no": "IZ1161",
       "departs_at": "2026-06-06T22:30:00",
       "arrives_at": "2026-06-15T09:20:00"
+    },
+    {
+      "timestamp": "2026-04-08T02:26:10",
+      "date": "2026-04-08",
+      "price": 1316.17,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-07",
+      "return_date": "2026-06-14",
+      "carrier": "ETHIOPIAN AIRLINES",
+      "flight_no": "ET419",
+      "departs_at": "2026-06-07T15:35:00",
+      "arrives_at": "2026-06-15T21:10:00"
     }
   ],
   "Berlin": [
@@ -17211,6 +17223,18 @@
       "flight_no": "TP1604",
       "departs_at": "2026-06-06T05:05:00",
       "arrives_at": "2026-06-14T03:15:00"
+    },
+    {
+      "timestamp": "2026-04-08T02:26:14",
+      "date": "2026-04-08",
+      "price": 548.37,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-07",
+      "return_date": "2026-06-14",
+      "carrier": "EL AL",
+      "flight_no": "LY2371",
+      "departs_at": "2026-06-07T06:20:00",
+      "arrives_at": "2026-06-14T15:50:00"
     }
   ]
 }
