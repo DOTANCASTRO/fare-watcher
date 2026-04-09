@@ -8790,6 +8790,18 @@
       "flight_no": "IZ163",
       "departs_at": "2026-06-08T06:20:00",
       "arrives_at": "2026-06-16T14:55:00"
+    },
+    {
+      "timestamp": "2026-04-09T05:09:12",
+      "date": "2026-04-09",
+      "price": 1201.11,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-08",
+      "return_date": "2026-06-15",
+      "carrier": "ARKIA",
+      "flight_no": "IZ163",
+      "departs_at": "2026-06-08T06:20:00",
+      "arrives_at": "2026-06-16T14:55:00"
     }
   ],
   "Berlin": [
@@ -17562,6 +17574,18 @@
     },
     {
       "timestamp": "2026-04-09T02:12:27",
+      "date": "2026-04-09",
+      "price": 480.47,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-08",
+      "return_date": "2026-06-15",
+      "carrier": "HAHN AIR SYSTEMS",
+      "flight_no": "H158",
+      "departs_at": "2026-06-08T10:20:00",
+      "arrives_at": "2026-06-16T00:10:00"
+    },
+    {
+      "timestamp": "2026-04-09T05:09:15",
       "date": "2026-04-09",
       "price": 480.47,
       "route": "TLV\u2192BER",
