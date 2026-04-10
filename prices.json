@@ -8934,6 +8934,18 @@
       "flight_no": "EY594",
       "departs_at": "2026-06-08T15:05:00",
       "arrives_at": "2026-06-16T05:50:00"
+    },
+    {
+      "timestamp": "2026-04-10T02:31:55",
+      "date": "2026-04-10",
+      "price": 1219.87,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-09",
+      "return_date": "2026-06-16",
+      "carrier": "ARKIA",
+      "flight_no": "IZ161",
+      "departs_at": "2026-06-09T21:45:00",
+      "arrives_at": "2026-06-17T15:10:00"
     }
   ],
   "Berlin": [
@@ -17859,6 +17871,18 @@
       "flight_no": "H158",
       "departs_at": "2026-06-08T10:20:00",
       "arrives_at": "2026-06-16T00:10:00"
+    },
+    {
+      "timestamp": "2026-04-10T02:31:58",
+      "date": "2026-04-10",
+      "price": 532.07,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-09",
+      "return_date": "2026-06-16",
+      "carrier": "AIR FRANCE",
+      "flight_no": "AF963",
+      "departs_at": "2026-06-09T16:30:00",
+      "arrives_at": "2026-06-17T14:45:00"
     }
   ]
 }
