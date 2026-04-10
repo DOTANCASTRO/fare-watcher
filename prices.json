@@ -9102,6 +9102,18 @@
       "flight_no": "LY91",
       "departs_at": "2026-06-09T19:45:00",
       "arrives_at": "2026-06-16T22:20:00"
+    },
+    {
+      "timestamp": "2026-04-10T21:37:05",
+      "date": "2026-04-10",
+      "price": 1299.07,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-09",
+      "return_date": "2026-06-16",
+      "carrier": "EL AL",
+      "flight_no": "LY91",
+      "departs_at": "2026-06-09T19:45:00",
+      "arrives_at": "2026-06-16T22:20:00"
     }
   ],
   "Berlin": [
@@ -18186,6 +18198,18 @@
     },
     {
       "timestamp": "2026-04-10T20:36:47",
+      "date": "2026-04-10",
+      "price": 532.07,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-09",
+      "return_date": "2026-06-16",
+      "carrier": "AIR FRANCE",
+      "flight_no": "AF963",
+      "departs_at": "2026-06-09T16:30:00",
+      "arrives_at": "2026-06-17T14:45:00"
+    },
+    {
+      "timestamp": "2026-04-10T21:37:08",
       "date": "2026-04-10",
       "price": 532.07,
       "route": "TLV\u2192BER",
