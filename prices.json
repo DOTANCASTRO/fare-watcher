@@ -9318,6 +9318,18 @@
       "flight_no": "CY111",
       "departs_at": "2026-06-10T16:10:00",
       "arrives_at": "2026-06-18T14:55:00"
+    },
+    {
+      "timestamp": "2026-04-11T19:34:52",
+      "date": "2026-04-11",
+      "price": 1215.87,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-10",
+      "return_date": "2026-06-17",
+      "carrier": "CYPRUS AIRWAYS",
+      "flight_no": "CY111",
+      "departs_at": "2026-06-10T16:10:00",
+      "arrives_at": "2026-06-18T14:55:00"
     }
   ],
   "Berlin": [
@@ -18618,6 +18630,18 @@
     },
     {
       "timestamp": "2026-04-11T18:43:32",
+      "date": "2026-04-11",
+      "price": 549.27,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-10",
+      "return_date": "2026-06-17",
+      "carrier": "EL AL",
+      "flight_no": "LY2371",
+      "departs_at": "2026-06-10T06:20:00",
+      "arrives_at": "2026-06-17T15:50:00"
+    },
+    {
+      "timestamp": "2026-04-11T19:34:55",
       "date": "2026-04-11",
       "price": 549.27,
       "route": "TLV\u2192BER",
