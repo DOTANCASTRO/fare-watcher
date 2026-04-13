@@ -9678,6 +9678,18 @@
       "flight_no": "ET415",
       "departs_at": "2026-06-12T10:00:00",
       "arrives_at": "2026-06-20T14:35:00"
+    },
+    {
+      "timestamp": "2026-04-13T18:01:01",
+      "date": "2026-04-13",
+      "price": 1215.87,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-12",
+      "return_date": "2026-06-19",
+      "carrier": "CYPRUS AIRWAYS",
+      "flight_no": "CY111",
+      "departs_at": "2026-06-12T15:55:00",
+      "arrives_at": "2026-06-20T14:55:00"
     }
   ],
   "Berlin": [
@@ -19338,6 +19350,18 @@
     },
     {
       "timestamp": "2026-04-13T16:12:49",
+      "date": "2026-04-13",
+      "price": 487.07,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-12",
+      "return_date": "2026-06-19",
+      "carrier": "AIR FRANCE",
+      "flight_no": "AF963",
+      "departs_at": "2026-06-12T16:30:00",
+      "arrives_at": "2026-06-20T14:45:00"
+    },
+    {
+      "timestamp": "2026-04-13T18:01:04",
       "date": "2026-04-13",
       "price": 487.07,
       "route": "TLV\u2192BER",
