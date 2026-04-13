@@ -9606,6 +9606,18 @@
       "flight_no": "ET415",
       "departs_at": "2026-06-12T10:00:00",
       "arrives_at": "2026-06-20T14:35:00"
+    },
+    {
+      "timestamp": "2026-04-13T05:41:36",
+      "date": "2026-04-13",
+      "price": 1373.67,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-12",
+      "return_date": "2026-06-19",
+      "carrier": "ETHIOPIAN AIRLINES",
+      "flight_no": "ET415",
+      "departs_at": "2026-06-12T10:00:00",
+      "arrives_at": "2026-06-20T14:35:00"
     }
   ],
   "Berlin": [
@@ -19203,6 +19215,18 @@
       "flight_no": "TP1604",
       "departs_at": "2026-06-12T08:00:00",
       "arrives_at": "2026-06-20T03:40:00"
+    },
+    {
+      "timestamp": "2026-04-13T05:41:40",
+      "date": "2026-04-13",
+      "price": 488.67,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-12",
+      "return_date": "2026-06-19",
+      "carrier": "AIR FRANCE",
+      "flight_no": "AF963",
+      "departs_at": "2026-06-12T16:30:00",
+      "arrives_at": "2026-06-20T14:45:00"
     }
   ]
 }
