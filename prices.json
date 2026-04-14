@@ -9870,6 +9870,18 @@
       "flight_no": "IZ1161",
       "departs_at": "2026-06-13T22:30:00",
       "arrives_at": "2026-06-21T14:05:00"
+    },
+    {
+      "timestamp": "2026-04-14T22:44:30",
+      "date": "2026-04-14",
+      "price": 1201.71,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-13",
+      "return_date": "2026-06-20",
+      "carrier": "ARKIA",
+      "flight_no": "IZ1161",
+      "departs_at": "2026-06-13T22:30:00",
+      "arrives_at": "2026-06-21T14:05:00"
     }
   ],
   "Berlin": [
@@ -19722,6 +19734,18 @@
     },
     {
       "timestamp": "2026-04-14T21:52:08",
+      "date": "2026-04-14",
+      "price": 492.47,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-13",
+      "return_date": "2026-06-20",
+      "carrier": "TAP PORTUGAL",
+      "flight_no": "TP1604",
+      "departs_at": "2026-06-13T05:05:00",
+      "arrives_at": "2026-06-21T03:15:00"
+    },
+    {
+      "timestamp": "2026-04-14T22:44:34",
       "date": "2026-04-14",
       "price": 492.47,
       "route": "TLV\u2192BER",
