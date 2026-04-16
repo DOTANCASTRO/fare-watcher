@@ -10050,6 +10050,18 @@
       "flight_no": "ET419",
       "departs_at": "2026-06-14T15:35:00",
       "arrives_at": "2026-06-22T21:10:00"
+    },
+    {
+      "timestamp": "2026-04-16T02:37:25",
+      "date": "2026-04-16",
+      "price": 1202.01,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-15",
+      "return_date": "2026-06-22",
+      "carrier": "ARKIA",
+      "flight_no": "IZ163",
+      "departs_at": "2026-06-15T06:20:00",
+      "arrives_at": "2026-06-23T14:55:00"
     }
   ],
   "Berlin": [
@@ -20091,6 +20103,18 @@
       "flight_no": "LY2371",
       "departs_at": "2026-06-14T06:20:00",
       "arrives_at": "2026-06-21T15:50:00"
+    },
+    {
+      "timestamp": "2026-04-16T02:37:28",
+      "date": "2026-04-16",
+      "price": 549.87,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-15",
+      "return_date": "2026-06-22",
+      "carrier": "EL AL",
+      "flight_no": "LY2371",
+      "departs_at": "2026-06-15T06:20:00",
+      "arrives_at": "2026-06-22T15:50:00"
     }
   ]
 }
