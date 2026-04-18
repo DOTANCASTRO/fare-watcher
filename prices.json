@@ -10530,6 +10530,18 @@
       "flight_no": "IZ1161",
       "departs_at": "2026-06-17T21:55:00",
       "arrives_at": "2026-06-25T14:55:00"
+    },
+    {
+      "timestamp": "2026-04-18T18:51:35",
+      "date": "2026-04-18",
+      "price": 1298.07,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-17",
+      "return_date": "2026-06-24",
+      "carrier": "EL AL",
+      "flight_no": "LY91",
+      "departs_at": "2026-06-17T19:45:00",
+      "arrives_at": "2026-06-24T22:20:00"
     }
   ],
   "Berlin": [
@@ -21042,6 +21054,18 @@
     },
     {
       "timestamp": "2026-04-18T17:36:25",
+      "date": "2026-04-18",
+      "price": 549.87,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-17",
+      "return_date": "2026-06-24",
+      "carrier": "EL AL",
+      "flight_no": "LY2371",
+      "departs_at": "2026-06-17T06:20:00",
+      "arrives_at": "2026-06-24T15:50:00"
+    },
+    {
+      "timestamp": "2026-04-18T18:51:38",
       "date": "2026-04-18",
       "price": 549.87,
       "route": "TLV\u2192BER",
