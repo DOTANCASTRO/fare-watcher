@@ -10434,6 +10434,18 @@
       "flight_no": "IZ1161",
       "departs_at": "2026-06-17T21:55:00",
       "arrives_at": "2026-06-25T14:55:00"
+    },
+    {
+      "timestamp": "2026-04-18T09:48:08",
+      "date": "2026-04-18",
+      "price": 1222.01,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-17",
+      "return_date": "2026-06-24",
+      "carrier": "ARKIA",
+      "flight_no": "IZ1161",
+      "departs_at": "2026-06-17T21:55:00",
+      "arrives_at": "2026-06-25T14:55:00"
     }
   ],
   "Berlin": [
@@ -20850,6 +20862,18 @@
     },
     {
       "timestamp": "2026-04-18T08:50:52",
+      "date": "2026-04-18",
+      "price": 549.87,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-17",
+      "return_date": "2026-06-24",
+      "carrier": "EL AL",
+      "flight_no": "LY2371",
+      "departs_at": "2026-06-17T06:20:00",
+      "arrives_at": "2026-06-24T15:50:00"
+    },
+    {
+      "timestamp": "2026-04-18T09:48:11",
       "date": "2026-04-18",
       "price": 549.87,
       "route": "TLV\u2192BER",
