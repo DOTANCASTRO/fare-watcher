@@ -10758,6 +10758,18 @@
       "flight_no": "ET419",
       "departs_at": "2026-06-18T15:35:00",
       "arrives_at": "2026-06-26T21:10:00"
+    },
+    {
+      "timestamp": "2026-04-19T19:41:14",
+      "date": "2026-04-19",
+      "price": 1316.67,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-18",
+      "return_date": "2026-06-25",
+      "carrier": "ETHIOPIAN AIRLINES",
+      "flight_no": "ET419",
+      "departs_at": "2026-06-18T15:35:00",
+      "arrives_at": "2026-06-26T21:10:00"
     }
   ],
   "Berlin": [
@@ -21507,6 +21519,18 @@
       "flight_no": "GQ721",
       "departs_at": "2026-06-18T23:30:00",
       "arrives_at": "2026-06-25T22:30:00"
+    },
+    {
+      "timestamp": "2026-04-19T19:41:17",
+      "date": "2026-04-19",
+      "price": 549.87,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-18",
+      "return_date": "2026-06-25",
+      "carrier": "EL AL",
+      "flight_no": "LY2371",
+      "departs_at": "2026-06-18T06:20:00",
+      "arrives_at": "2026-06-25T15:50:00"
     }
   ]
 }
