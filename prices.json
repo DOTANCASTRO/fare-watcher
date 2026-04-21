@@ -11118,6 +11118,18 @@
       "flight_no": "IZ1161",
       "departs_at": "2026-06-20T22:30:00",
       "arrives_at": "2026-06-29T07:15:00"
+    },
+    {
+      "timestamp": "2026-04-21T23:34:50",
+      "date": "2026-04-21",
+      "price": 1222.01,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-20",
+      "return_date": "2026-06-27",
+      "carrier": "ARKIA",
+      "flight_no": "IZ1161",
+      "departs_at": "2026-06-20T22:30:00",
+      "arrives_at": "2026-06-29T07:15:00"
     }
   ],
   "Berlin": [
@@ -22218,6 +22230,18 @@
     },
     {
       "timestamp": "2026-04-21T22:37:38",
+      "date": "2026-04-21",
+      "price": 586.87,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-20",
+      "return_date": "2026-06-27",
+      "carrier": "BRUSSELS AIRLINES",
+      "flight_no": "SN3294",
+      "departs_at": "2026-06-20T04:50:00",
+      "arrives_at": "2026-06-27T15:15:00"
+    },
+    {
+      "timestamp": "2026-04-21T23:34:53",
       "date": "2026-04-21",
       "price": 586.87,
       "route": "TLV\u2192BER",
