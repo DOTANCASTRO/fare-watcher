@@ -11178,6 +11178,18 @@
       "flight_no": "EY594",
       "departs_at": "2026-06-21T15:05:00",
       "arrives_at": "2026-06-29T05:50:00"
+    },
+    {
+      "timestamp": "2026-04-22T11:04:38",
+      "date": "2026-04-22",
+      "price": 1222.01,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-21",
+      "return_date": "2026-06-28",
+      "carrier": "ARKIA",
+      "flight_no": "IZ163",
+      "departs_at": "2026-06-21T06:20:00",
+      "arrives_at": "2026-06-29T14:55:00"
     }
   ],
   "Berlin": [
@@ -22338,6 +22350,18 @@
     },
     {
       "timestamp": "2026-04-22T09:20:22",
+      "date": "2026-04-22",
+      "price": 593.97,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-21",
+      "return_date": "2026-06-28",
+      "carrier": "AEGEAN AIRLINES",
+      "flight_no": "A3927",
+      "departs_at": "2026-06-21T19:55:00",
+      "arrives_at": "2026-06-29T02:45:00"
+    },
+    {
+      "timestamp": "2026-04-22T11:04:41",
       "date": "2026-04-22",
       "price": 593.97,
       "route": "TLV\u2192BER",
