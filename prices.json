@@ -11298,6 +11298,18 @@
       "flight_no": "EY594",
       "departs_at": "2026-06-22T15:05:00",
       "arrives_at": "2026-06-30T05:50:00"
+    },
+    {
+      "timestamp": "2026-04-23T05:29:58",
+      "date": "2026-04-23",
+      "price": 1222.01,
+      "route": "TLV\u2192NRT",
+      "depart_date": "2026-06-22",
+      "return_date": "2026-06-29",
+      "carrier": "ARKIA",
+      "flight_no": "IZ163",
+      "departs_at": "2026-06-22T06:20:00",
+      "arrives_at": "2026-06-30T14:55:00"
     }
   ],
   "Berlin": [
@@ -22587,6 +22599,18 @@
       "flight_no": "A3929",
       "departs_at": "2026-06-22T05:00:00",
       "arrives_at": "2026-06-30T12:50:00"
+    },
+    {
+      "timestamp": "2026-04-23T05:30:01",
+      "date": "2026-04-23",
+      "price": 601.67,
+      "route": "TLV\u2192BER",
+      "depart_date": "2026-06-22",
+      "return_date": "2026-06-29",
+      "carrier": "BRUSSELS AIRLINES",
+      "flight_no": "SN3294",
+      "departs_at": "2026-06-22T04:50:00",
+      "arrives_at": "2026-06-30T02:40:00"
     }
   ]
 }
